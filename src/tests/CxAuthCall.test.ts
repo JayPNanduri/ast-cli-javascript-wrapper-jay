@@ -25,9 +25,11 @@ describe("ScanCreate cases",() => {
     const data = await auth.scanCreate(params);
     const cxCommandOutput: CxCommandOutput =JSON.parse(JSON.stringify(data))    
     const ScanObject = cxCommandOutput.scanObjectList.pop()
-    const scanShowObject = await auth.scanShow(ScanObject.ID);
-    logger.info(" Json object from successful wait mode case: " + JSON.stringify(scanShowObject))
-    expect(scanShowObject.scanObjectList.pop().Status).toEqual("Completed")   
+    const scanShowObject = await auth.scanShow(ScanObject.ID).then( c => {
+        logger.info(" Json object from successful wait mode case: " + JSON.stringify(scanShowObject))    
+        expect(c.scanObjectList.pop().Status).toEqual("Completed")});
+    // logger.info(" Json object from successful wait mode case: " + JSON.stringify(scanShowObject))
+    // expect(scanShowObject.scanObjectList.pop().Status).toEqual("Completed")   
 })
 
     it('ScanCreate Successful case with Branch', async () => {
@@ -36,9 +38,12 @@ describe("ScanCreate cases",() => {
         const data = await auth.scanCreate(params);
         const cxCommandOutput: CxCommandOutput =JSON.parse(JSON.stringify(data))
         const ScanObject = cxCommandOutput.scanObjectList.pop()
-        const scanShowObject = await auth.scanShow(ScanObject.ID);
-        logger.info(" Json object from successful wait mode case with branch: " +JSON.stringify(scanShowObject))
-        expect(scanShowObject.scanObjectList.pop().Status).toEqual("Completed")
+        //const scanShowObject = await auth.scanShow(ScanObject.ID);
+        // logger.info(" Json object from successful wait mode case with branch: " +JSON.stringify(scanShowObject))
+        // expect(scanShowObject.scanObjectList.pop().Status).toEqual("Completed")
+        const scanShowObject = await auth.scanShow(ScanObject.ID).then( c => {
+            logger.info(" Json object from successful wait mode case with branch: " +JSON.stringify(scanShowObject))    
+            expect(c.scanObjectList.pop().Status).toEqual("Completed")});
 
     })
 
@@ -47,9 +52,10 @@ describe("ScanCreate cases",() => {
         const data = await auth.scanCreate(params);
         const cxCommandOutput: CxCommandOutput =JSON.parse(JSON.stringify(data))
         const ScanObject = cxCommandOutput.scanObjectList.pop()
-        const scanShowObject = await auth.scanShow(ScanObject.ID);
-        logger.info(" Json object from failure case: " + JSON.stringify(scanShowObject))
-        expect(scanShowObject.scanObjectList.pop().Status).toEqual("Failed")
+        const scanShowObject = await auth.scanShow(ScanObject.ID).then( c => {
+            logger.info(" Json object from failure case: " + JSON.stringify(scanShowObject))    
+            expect(c.scanObjectList.pop().Status).toEqual("Failed")});
+        
     })
 
     it('ScanCreate Successful case no wait mode', async () => {
@@ -58,9 +64,14 @@ describe("ScanCreate cases",() => {
         const data = await auth.scanCreate(params);
         const cxCommandOutput: CxCommandOutput =JSON.parse(JSON.stringify(data))     
         const ScanObject = cxCommandOutput.scanObjectList.pop()
-        const scanShowObject = await auth.scanShow(ScanObject.ID);
-        logger.info(" Json object from successful no wait mode case: " + JSON.stringify(scanShowObject))
-        expect(scanShowObject.scanObjectList.pop().Status).toEqual("Running")
+        // const scanShowObject = await auth.scanShow(ScanObject.ID);
+        // logger.info(" Json object from successful no wait mode case: " + JSON.stringify(scanShowObject))
+        // expect(scanShowObject.scanObjectList.pop().Status).toEqual("Running")
+
+        const scanShowObject = await auth.scanShow(ScanObject.ID).then( c => {
+            logger.info(" Json object from failure case: " + JSON.stringify(scanShowObject))    
+            expect(c.scanObjectList.pop().Status).toEqual("Running")});
+        
     })
 
 });

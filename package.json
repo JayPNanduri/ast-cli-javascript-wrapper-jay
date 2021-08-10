@@ -1,6 +1,6 @@
 {
-  "name": "@CheckmarxDev/ast-cli-javascript-wrapper",
-  "version": "0.0.16",
+  "name": "@JayPNanduri/ast-cli-javascript-wrapper-jay",
+  "version": "0.0.2",
   "description": "AST CLI Javascript wrapper",
   "main": "dist/CxAuth.js",
   "typings": "dist/CxAuth.d.ts",
@@ -28,13 +28,13 @@
     "postbuild": "copyfiles -u 1 src/main/resources/cx* dist/",
     "test": "jest -i --silent=false"
   },
-  "repository": "https://github.com/CheckmarxDev/ast-cli-javascript-wrapper.git",
+  "repository": "https://github.com/JayPNanduri/ast-cli-javascript-wrapper-jay.git",
   "author": "Jay Nanduri",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CheckmarxDev/ast-cli-javascript-wrapper/issues"
+    "url": "https://github.com/JayPNanduriJayPNanduri/ast-cli-javascript-wrapper-jay/issues"
   },
-  "homepage": "https://github.com/CheckmarxDev/ast-cli-javascript-wrapper#readme",
+  "homepage": "https://github.com/JayPNanduri/ast-cli-javascript-wrapper#readme",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.14.2",
